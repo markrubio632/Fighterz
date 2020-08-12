@@ -54,6 +54,9 @@ public class Fighter {
 		return "Fighter [id=" + id + ", fName=" + fName + ", nickName=" + nickName + ", lName=" + lName + ", gender="
 				+ gender + "]";
 	}
+	public Fighter() {
+		super();
+	}
 	
 	
 }
