@@ -4,36 +4,35 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-	crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/CSS/MySideBar.css">
 <head>
+<link rel="stylesheet" type="text/css" href="/WEB-INF/CSS/MySideBar.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
+
 	<form:form method="post" modelAttribute="fighter">
-		
+
 		<!-- side bar -->
 		<div class="sidebar">
-			<a class="active" href="settings.jsp">Settings</a> 
-			<a href="#profile">My Profile</a>
+			<a class="active" href="settings.jsp">Settings</a> <a href="#profile">My
+				Profile</a>
 		</div>
-		
+
 		<!-- main container for information -->
 		<div class="container" align="center">
 			<caption>
 				<h1>Fighter Basic Information</h1>
 			</caption>
-			<h2>First Name: ${fName}</h2>
+			<c:forEach var="fighter" items="${allFighters}">
+				<%-- <c:out value="${fighter.id}"></c:out> --%>
+				First Name: <c:out value="${fighter.fName}"></c:out><br>
+				Nick Name: <c:out value="${fighter.nickName}"></c:out><br>
+				Last Name: <c:out value="${fighter.lName}"></c:out><br>
+			</c:forEach>
+			<%-- <h2>First Name: ${fName}</h2>
 			<h2>Last Name: ${lName}</h2>
-			<h2>NickName: ${nickName}</h2>
+			<h2>NickName: ${nickName}</h2> --%>
 		</div>
 
 	</form:form>

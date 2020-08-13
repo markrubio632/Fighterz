@@ -1,1 +1,0 @@
-insert into fighterz values(0,"Andrew", "Male", "Seale", "Anj");
