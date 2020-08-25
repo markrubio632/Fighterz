@@ -13,22 +13,23 @@ import com.fighters.Fighter;
 
 @Controller
 @SessionAttributes("fighter")
-public class FightController {
+public class AccountController {
 	
-	//CONTROLLER FOR ACTIONS THAT USER DOES
-	//i.e. user swipes, this controller handles the action
+	//HANDLES ACCOUNT STUFF
+	//i.e. settings, accounts, etc.
+	//registration and login will be done in login controller
 	
 	@Autowired
 	DaoImpl daoimpl;
+	
+	@GetMapping("/account")
+	public String showAccount(ModelMap model, Fighter fighter, int id) {
 
+		List<Fighter> mainFighter = daoimpl.findById(id);
 
-	@GetMapping("/fightview")
-	public String allFighters(ModelMap model) {
-
-		List<Fighter> allFighters = daoimpl.findFighters();
-		model.put("allFighters", allFighters);
-
-		return "/fightview";
+		model.put("mainFighter", mainFighter);
+		System.out.println(mainFighter);
+		return "account";
 	}
-
+	
 }
