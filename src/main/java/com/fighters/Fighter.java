@@ -1,7 +1,9 @@
 package com.fighters;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,15 +12,22 @@ import javax.persistence.Table;
 public class Fighter {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	@Column(name = "user_name")
 	private String userName;
+	@Column(name = "user_pass")
 	private String pass;
+	@Column(name = "user_first")
 	private String fName;
+	@Column(name = "user_last")
 	private String lName;
+	@Column(name = "user_nick")
 	private String nickName;
 	// int 1=male, 2=female, etc.
-	private int gender;
+	@Column(name = "user_gender")
+	private String gender;
 
 	public String getfName() {
 		return fName;
@@ -44,11 +53,11 @@ public class Fighter {
 		this.lName = lName;
 	}
 
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -81,10 +90,9 @@ public class Fighter {
 		return "Fighter [id=" + id + ", userName=" + userName + ", pass=" + pass + ", fName=" + fName + ", lName="
 				+ lName + ", nickName=" + nickName + ", gender=" + gender + "]";
 	}
-	
-	public Fighter(int id, String userName, String pass, String fName,
-			String lName, String nickName, int gender) {
-		
+
+	public Fighter(int id, String userName, String pass, String fName, String lName, String nickName, String gender) {
+
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -93,7 +101,7 @@ public class Fighter {
 		this.lName = lName;
 		this.nickName = nickName;
 		this.gender = gender;
-		
+
 	}
 
 }

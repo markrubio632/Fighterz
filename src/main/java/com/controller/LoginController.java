@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.crud.CRUDRepo;
@@ -17,6 +18,7 @@ import com.fighters.Fighter;
 import com.profileService.LoginService;
 
 @Controller
+@RequestMapping(path="/login")
 @SessionAttributes("fighter")
 public class LoginController {
 	
@@ -45,12 +47,7 @@ public class LoginController {
 
 	@PostMapping("/register")
 	public String fighterRegistered(ModelMap model, @RequestParam String userName, @RequestParam String pass, @RequestParam String fName, @RequestParam String nickName,
-			@RequestParam String lName, @RequestParam int gender) {
-		
-		/*
-		 * model.put("fName", fName); model.put("nickName", nickName);
-		 * model.put("lName", lName); model.put("gender", gender);
-		 */
+			@RequestParam String lName, @RequestParam String gender) {
 
 		//insert validation to check user input - i.e. phone number specific length/format
 		daoimpl.addFighter(new Fighter(0,userName, pass, fName, nickName, lName, gender));

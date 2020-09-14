@@ -24,15 +24,15 @@
 			<caption>
 				<h1>Fighter Basic Information</h1>
 			</caption>
-			<c:forEach var="fighter" items="${allFighters}">
-				<%-- <c:out value="${fighter.id}"></c:out> --%>
+			<%-- <c:forEach var="fighter" items="${mainFighter}">
+				<c:out value="${fighter.id}"></c:out>
 				First Name: <c:out value="${fighter.fName}"></c:out><br>
 				Nick Name: <c:out value="${fighter.nickName}"></c:out><br>
 				Last Name: <c:out value="${fighter.lName}"></c:out><br>
-			</c:forEach>
-			<%-- <h2>First Name: ${fName}</h2>
+			</c:forEach> --%>
+			<h2>First Name: ${mainFighter.fName}</h2>
 			<h2>Last Name: ${lName}</h2>
-			<h2>NickName: ${nickName}</h2> --%>
+			<h2>NickName: ${nickName}</h2>
 		</div>
 
 	</form:form>
