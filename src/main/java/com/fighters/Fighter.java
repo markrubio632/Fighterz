@@ -14,7 +14,7 @@ public class Fighter {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 	@Column(name = "user_name")
 	private String userName;
 	@Column(name = "user_pass")
@@ -77,8 +77,12 @@ public class Fighter {
 		this.pass = pass;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Fighter() {
@@ -91,7 +95,7 @@ public class Fighter {
 				+ lName + ", nickName=" + nickName + ", gender=" + gender + "]";
 	}
 
-	public Fighter(int id, String userName, String pass, String fName, String lName, String nickName, String gender) {
+	public Fighter(Integer id, String userName, String pass, String fName, String lName, String nickName, String gender) {
 
 		super();
 		this.id = id;

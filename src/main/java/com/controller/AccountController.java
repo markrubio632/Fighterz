@@ -20,10 +20,11 @@ public class AccountController {
 	@Autowired
 	DaoImpl dao;
 
-	@GetMapping("/account")
+	@GetMapping("/showAccount")
 	public String showAccount(ModelMap model, Fighter fighter, int id) {
 
 		Optional<Fighter> mainFighter = dao.findById(id);
+		System.out.println("mainFighter is: " + mainFighter);
 		
 		return "account";
 	}

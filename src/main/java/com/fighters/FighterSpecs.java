@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +18,7 @@ public class FighterSpecs {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "spec_id")
-	private int specId;
+	private Integer specId;
 	@Column(name = "user_record")
 	private String record;
 	@Lob
@@ -31,6 +32,28 @@ public class FighterSpecs {
 	private double weight;
 	@Column(name = "user_about")
 	private String about;
+	@ManyToOne(targetEntity = Fighter.class)
+	private Fighter fighter;
+
+	public Integer getSpecId() {
+		return specId;
+	}
+
+	public void setSpecId(Integer specId) {
+		this.specId = specId;
+	}
+
+	public Fighter getFighter() {
+		return fighter;
+	}
+
+	public void setFighter(Fighter fighter) {
+		this.fighter = fighter;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
 
 	public String getRecord() {
 		return record;
@@ -81,7 +104,7 @@ public class FighterSpecs {
 	}
 
 	public FighterSpecs(int specId, String record, byte[] image, String style, double height, double weight,
-			String about) {
+			String about, Integer userId) {
 		super();
 		this.specId = specId;
 		this.record = record;
@@ -90,6 +113,7 @@ public class FighterSpecs {
 		this.height = height;
 		this.weight = weight;
 		this.about = about;
+		this.fighter.setId(userId);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.profileService;
+package com.service;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class LoginService {
 		
 		for(Fighter fight : fList) {
 			
-			if(fight.getUserName() == name && fight.getPass() == pass) {
+			if(fight.getUserName().equals(name) && fight.getPass().equals(pass)) {
 				return true;
 			}
 			
