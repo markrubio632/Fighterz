@@ -15,8 +15,6 @@ public class Fighter {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	@Column(name = "user_name")
-	private String userName;
 	@Column(name = "user_pass")
 	private String pass;
 	@Column(name = "user_first")
@@ -28,6 +26,8 @@ public class Fighter {
 	// int 1=male, 2=female, etc.
 	@Column(name = "user_gender")
 	private String gender;
+	@Column(name = "user_phone")
+	private String contactNum;
 
 	public String getfName() {
 		return fName;
@@ -61,14 +61,6 @@ public class Fighter {
 		this.gender = gender;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
 	public String getPass() {
 		return pass;
 	}
@@ -89,23 +81,30 @@ public class Fighter {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Fighter [id=" + id + ", userName=" + userName + ", pass=" + pass + ", fName=" + fName + ", lName="
-				+ lName + ", nickName=" + nickName + ", gender=" + gender + "]";
+	public String getContactNum() {
+		return contactNum;
 	}
 
-	public Fighter(Integer id, String userName, String pass, String fName, String lName, String nickName, String gender) {
+	public void setContactNum(String contactNum) {
+		this.contactNum = contactNum;
+	}
 
+	public Fighter(Integer id, String pass, String fName, String lName, String nickName, String gender,
+			String contactNum) {
 		super();
 		this.id = id;
-		this.userName = userName;
 		this.pass = pass;
 		this.fName = fName;
 		this.lName = lName;
 		this.nickName = nickName;
 		this.gender = gender;
+		this.contactNum = contactNum;
+	}
 
+	@Override
+	public String toString() {
+		return "Fighter [id=" + id + ", pass=" + pass + ", fName=" + fName + ", lName=" + lName + ", nickName="
+				+ nickName + ", gender=" + gender + ", contactNum=" + contactNum + "]";
 	}
 
 }
