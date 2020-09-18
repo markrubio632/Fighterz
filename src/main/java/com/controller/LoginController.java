@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.dao.DaoImpl;
 import com.fighters.Fighter;
 import com.service.LoginService;
+import com.util.InputValidation;
 
 @Controller
 @RequestMapping(path="/login")
@@ -32,6 +33,9 @@ public class LoginController {
 	
 	@Autowired
 	DaoImpl daoimpl;
+	
+	@Autowired
+	InputValidation input;
 	
 	@GetMapping("/index")
 	public String showIndex() {
@@ -61,20 +65,22 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public String LoginSuccess(ModelMap model, @RequestParam String userName, @RequestParam String pass ) {
+	public String LoginSuccess(ModelMap model, @RequestParam String contactNum, @RequestParam String pass ) {
 		
 		List<Fighter> fList = daoimpl.findFighters();
 		
 		for(Fighter fighter : fList) {
-			if(login.fighterReady(userName, pass)) {
+			if(!input.userExists(contactNum, pass)) {
 				//if true in the service, replace temporary user with the newly logged user
-				model.replace("temp", fighter);
+				
+				//USE HTTP SESSIONS to login
+				
+				
 			}
 			//if the user is not found, then give out error
-			//needs to be implemented in JSP
 			else {
 				//DISPLAY ERROR MESSAGE / LOGIN FAILED
-				//model.put("loginError", "Invalid Credentials. Please Try Again");
+				
 				return "login";
 			}
 			

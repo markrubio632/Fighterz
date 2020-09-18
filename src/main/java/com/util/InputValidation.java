@@ -32,14 +32,14 @@ public class InputValidation {
 
 	// valid for no numbers in names (in registration)
 
-	// valid for if username exists
-	public boolean fighterExists(String userName) {
+	// valid for if user exists
+	public boolean userExists(String contactNum, String password) {
 
 		List<Fighter> fighter = daoimpl.findFighters();
 
 		for (Fighter fight : fighter) {
 
-			if (fight.getUserName().equals(userName)) {
+			if (fight.getContactNum().equals(contactNum) && fight.getPass().equals(password)) {
 				return true;
 			}
 
